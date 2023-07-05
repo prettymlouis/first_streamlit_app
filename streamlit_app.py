@@ -4,18 +4,11 @@ import requests
 import snowflake.connector
 from urllib.error import URLError
 
-streamlit.title('My Parents New Healthy Diner')
-streamlit.header('Breakfast Menu')
-streamlit.text('🍳 Omega 3 scrambled egg')
-streamlit.text('🥗 Kale and goat cheese salad')
-streamlit.text('🥑 Avocado toast')
-streamlit.header('🍌🥭 Build Your Own Fruit Smoothie 🥝🍇')
 
 def get_fruit_data(this_fruit_choice):
   fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)
   fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
   return fruityvice_normalized
-
 
 streamlit.header("Fruityvice Fruit Advice!")
 try:
